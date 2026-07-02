@@ -1,10 +1,43 @@
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 import requests
+import os
+import sys
+import shutil
 
-requests.request(method='GET', url='https://github.com/FOSSLingo/resources/archive/refs/heads/main.zip' )
+backendContentFile = "resources.zip"
+backendCoursesFile = "resources/main.json"
+resourcesUrl = "https://github.com/FOSSLingo/resources/archive/refs/heads/main.zip"
+
+def setup():
+  print("Setting up for first time backend use..")
+  resourcesUrlGet = requests.request(method='GET', url='https://github.com/FOSSLingo/resources/archive/refs/heads/main.zip')
+  data = resourcesUrlGet.status_code
+  if data == 200:
+    print("HTTP 200, downloading resources")
+    with requests.get(resourcesUrl, stream=True) as r:
+      r.raise_for_status()
+      with open(backendContentFile, "wb") as f:
+        for chunk in r.iter_content(chunk_size=8192):
+          f.write(chunk)
+    shutil.unpack_archive("resources.zip", ".")
+    os.rename("resources-main", "resources")
+    os.remove("resources.zip")
+    print("Done downloading!")
+  elif data == 404:
+    print("404, retry script later")
+    sys.exit()
+  else:
+    print(data)
+
+if os.path.isdir('resources') == True:
+  print("Resources directoy present, skipping setup")
+else:
+  print('Resources directory missing, starting setup;')
+  setup()
 
 app = FastAPI()
 
 @app.get("/")
 async def root():
-  return {"message": "Hello, world!"}
+  return FileResponse(backendCoursesFile)
