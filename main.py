@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import requests
 import os
 import sys
@@ -37,6 +38,7 @@ else:
   setup()
 
 app = FastAPI()
+app.mount("/resources", StaticFiles(directory="resources"), name="resources")
 
 @app.get("/")
 async def root():
