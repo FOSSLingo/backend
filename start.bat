@@ -1,0 +1,2 @@
+@echo off
+fastapi dev --host 0.0.0.0
