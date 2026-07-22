@@ -15,7 +15,7 @@ Or, follow these instructions manually;
 
 ### Self hosting deploy
 
-If you would like to self host the backend on your own machine, follow these instructions. We don't cover port forwarding / exposing to the web, but for that, we reccomend `cloudflared`!
+If you would like to self host the backend on your own machine, follow these instructions. We don't cover port forwarding / exposing to the web, but for that, we recommend `cloudflared`!
 
 1. Clone this repo somewhere easy to access
 2. Create a Python venv: `uv venv venv`
