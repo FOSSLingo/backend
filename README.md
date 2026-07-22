@@ -31,25 +31,31 @@ If you would like to self host the backend on your own machine, follow these ins
 git clone https://github.com/FOSSLingo/web
 ```
 
-2. Create a Python venv: 
+2. cd into the directory:
+
+```bash
+cd web
+```
+
+3. Create a Python venv: 
 
 ```bash
 uv venv venv
 ```
 
-3. Activate the venv: 
+4. Activate the venv: 
 
 ```bash
 venv\Scripts\activate
 ```
 
-4. Install dependencies: 
+5. Install dependencies: 
 
 ```bash
 uv pip install -r requirements.txt
 ```
 
-5. Start server: 
+6. Start server: 
 
 ```bash
 fastapi run main.py --host 0.0.0.0 --port 8000
