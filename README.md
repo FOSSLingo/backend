@@ -25,6 +25,8 @@ If you would like to self host the backend on your own machine, follow these ins
 > We don't cover port forwarding / exposing to the web,
 > but for that, we recommend `cloudflared`!
 
+This guide assumes you have `uv` and `git` installed on a Linux system.
+
 1. Clone this repo somewhere easy to access: 
 
 ```bash
