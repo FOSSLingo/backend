@@ -28,13 +28,13 @@ If you would like to self host the backend on your own machine, follow these ins
 1. Clone this repo somewhere easy to access: 
 
 ```bash
-git clone https://github.com/FOSSLingo/web
+git clone https://github.com/FOSSLingo/backend
 ```
 
 2. cd into the directory:
 
 ```bash
-cd web
+cd backend
 ```
 
 3. Create a Python venv: 
